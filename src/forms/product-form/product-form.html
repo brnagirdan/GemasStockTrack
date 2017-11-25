@@ -1,0 +1,48 @@
+<form [ngFormModel]="productForm" novalidate (ngSubmit)="onSubmit()" class="well">
+
+  <div class="form-group" [ngClass]="{'has-danger': !productForm.controls.Description_Tr.valid}" >
+    <label class="form-control-label" for="first_name_field">Ürün(Tr)</label>
+    <input type="text" class="form-control" placeholder="Ürün" id="Description_Tr_field"
+           ngControl='Description_Tr'  >
+
+    <span class="text-help" *ngIf="!productForm.controls.Description_Tr.valid"
+          *ngFor="#e of productForm.controls.Description_Tr.errors | fieldErrors: 'Ürün'" >
+      {{e}}
+    </span>
+  </div>
+
+  <div class="form-group" [ngClass]="{'has-danger': !productForm.controls.Description_En.valid}" >
+    <label class="form-control-label" for="Description_En_field">Ürün(En)</label>
+    <input type="text" class="form-control" placeholder="Ürün" id="Description_En_field"
+           ngControl="Description_En" >
+
+    <span class="text-help" *ngIf="!productForm.controls.Description_En.valid"
+          *ngFor="#e of productForm.controls.Description_En.errors | fieldErrors: 'Ürün (En)'" >
+      {{e}}
+    </span>
+  </div>
+
+   <div class="form-group" [ngClass]="{'has-danger': !productForm.controls.GemasCode.valid}" >
+    <label class="form-control-label" for="GemasCode_field">Gemas Kod</label>
+    <input type="text" class="form-control" placeholder="Gemas Kod" id="GemasCode_field"
+           ngControl="GemasCode" >
+
+    <span class="text-help" *ngIf="!productForm.controls.GemasCode.valid"
+          *ngFor="#e of productForm.controls.GemasCode.errors | fieldErrors: 'Gemaş Kod'" >
+      {{e}}
+    </span>
+  </div>
+
+   <div class="form-group" [ngClass]="{'has-danger': !productForm.controls.Price.valid}" >
+    <label class="form-control-label" for="Price_field">Fiyat</label>
+    <input type="text" class="form-control" placeholder="Fiyat" id="Price_field"
+           ngControl="Price" >
+
+    <span class="text-help" *ngIf="!productForm.controls.Price.valid"
+          *ngFor="#e of productForm.controls.Price.errors | fieldErrors: 'Fiyat'" >
+      {{e}}
+    </span>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Kaydet</button>
+</form>

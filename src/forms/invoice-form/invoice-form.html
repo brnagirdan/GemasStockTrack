@@ -1,0 +1,157 @@
+
+ <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar" style="background:#009efb">
+            <nav class="navbar top-navbar navbar-toggleable-sm navbar-light" style="background:#009efb">
+              
+             
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside>
+           <!-- Sidebar scroll-->
+           <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="nav-small-cap">PROJELER</li>
+                        <li><a class="has-arrow"></a></li>
+                        <li><a class="has-arrow"></a></li>
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false" (click) = "goProducts()"><i class="mdi mdi-table"></i><span class="hide-menu">Ürünler </span></a>
+                          
+                        </li>
+                        <li><a class="has-arrow"></a></li>
+                        <li><a class="has-arrow"></a></li>
+                        <li><a class="has-arrow"></a></li>
+                        <li>
+                            <a class="has-arrow " href="#" aria-expanded="false" (click) = "goCompanies()"><i class="mdi mdi-bullseye"></i><span class="hide-menu">Şirketler</span></a>
+                        </li>
+                        <li><a class="has-arrow"></a></li>
+                        <li><a class="has-arrow"></a></li>
+                        <li><a class="has-arrow"></a></li>
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false" (click) = "goProformas()"><i class="mdi mdi-chart-bubble" ></i><span class="hide-menu">Proforma</span></a>
+                        </li>
+                        <li><a class="has-arrow"></a></li>
+                        <li><a class="has-arrow"></a></li>
+                        <li><a class="has-arrow"></a></li>
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false" (click) = "goInvoice()"><i class="mdi mdi-file" ></i><span class="hide-menu">Fatura</span></a>
+                        </li>
+                        <li><a class="has-arrow"></a></li>
+                        <li><a class="has-arrow"></a></li>
+                        <li><a class="has-arrow"></a></li>
+    
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false" (click) = "logout()"><span class="hide-menu" style="color:red">Çıkış</span></a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-block">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="d-flex flex-wrap">
+                          <h3 style="color: #369"></h3>
+                        <table class="table col-lg-12">
+                            <tr>
+                                <th>
+                                   <form [ngFormModel]="invoiceForm" novalidate (ngSubmit)="onSubmit()" class="well">
+
+  <div class="btn-group">
+       <button class="btn btn-secondary btn-md dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             {{selectname}}
+        </button>                                           
+            <ul class="dropdown-menu" >
+               <li *ngFor="#product of products" (click)="selectItem(product.Id,product.Description_Tr,product.Price)">
+                 <a>{{product.Description_Tr}}</a>
+                </li>
+              </ul>                                         
+ </div>   
+ <hr>
+   <div class="form-group" [ngClass]="{'has-danger': !invoiceForm.controls.Quantity.valid}" >
+    <label class="form-control-label" for="Quantity_field">Adet</label>
+    <input [value]="quantity" (input)="quantity=$event.target.value" type="text" class="form-control" placeholder="Adet" id="Quantity_field"
+           ngControl='Quantity'  >
+
+    <span class="text-help" *ngIf="!invoiceForm.controls.Quantity.valid"
+          *ngFor="#e of invoiceForm.controls.Quantity.errors | fieldErrors: 'Adet'" >
+      {{e}}
+    </span>
+  </div>
+  <hr>    
+  <div class="form-group" [ngClass]="{'has-danger': !invoiceForm.controls.QuantityType.valid}" >
+    <label class="form-control-label" for="QuantityType_field">Adet Tipi</label>
+    <input [value]="quantityType" (input)="quantityType=$event.target.value" type="text" class="form-control" placeholder="Adet Tipi" id="QuantityType_field"
+           ngControl='QuantityType'  >
+
+    <span class="text-help" *ngIf="!invoiceForm.controls.QuantityType.valid"
+          *ngFor="#e of invoiceForm.controls.QuantityType.errors | fieldErrors: 'Adet Tipi'" >
+      {{e}}
+    </span>
+  </div>
+
+  <div class="form-group" [ngClass]="{'has-danger': !invoiceForm.controls.DiscountRate.valid}" >
+    <label class="form-control-label" for="DiscountRate_field">İskonto</label>
+    <input [value]="discountRate" (input)="discountRate=$event.target.value" type="text" class="form-control" placeholder="İskonto" id="DiscountRate_field"
+           ngControl="DiscountRate" >
+
+    <span class="text-help" *ngIf="!invoiceForm.controls.DiscountRate.valid"
+          *ngFor="#e of invoiceForm.controls.DiscountRate.errors | fieldErrors: 'İskonto'" >
+      {{e}}
+    </span>
+  </div>
+
+
+
+  <button type="submit" class="btn btn-primary" (click) = "kaydet()">Kaydet</button>
+</form>
+
+                                </th>
+                            </tr>
+                        </table>           
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <footer class="footer">
+                 © 2017 GEMAŞ A.Ş.
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>

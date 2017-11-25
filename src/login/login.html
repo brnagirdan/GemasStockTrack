@@ -1,0 +1,26 @@
+<section id="wrapper">
+
+<div class="login-register" style="background-color: #e0ebeb">        
+            <div class="login-box card">
+            <div class="card-block">
+                <form class="form-horizontal form-material" id="loginform" >
+                    <h3 class="box-title m-b-20">E-posta ile giriş yap</h3>
+                    <div class="form-group ">
+                        <div class="col-xs-12">
+                            <input class="form-control" id="user_name" type="text" required="" placeholder="E-posta" [(ngModel)]="localUser.username"> </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <input class="form-control" type="password" required="" placeholder="Şifre" [(ngModel)]="localUser.password"> </div>
+                    </div>
+                    <br>
+                    <div class="form-group text-center m-t-20">
+                        <div class="col-xs-12">
+                            <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" style="padding:35px 100px;  padding-top:20px; " type="submit"  (click)="login()">Giriş</button>
+                        </div>
+                    </div>
+                </form> 
+            </div>
+          </div>
+    </div>
+   </section> 

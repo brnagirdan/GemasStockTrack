@@ -1,0 +1,169 @@
+
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar" style="background:#009efb">
+            <nav class="navbar top-navbar navbar-toggleable-sm navbar-light" style="background:#009efb">
+              <a class="navbar-brand">
+                        <!-- Logo icon -->
+                        <b>
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            <img src="../../../assets/images/logo-icon.png"  class="dark-logo" style="height:60px"/>
+                          
+                        </b>
+             </a>   
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside>
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="nav-small-cap">PROJELER</li>
+                        <li><a class="has-arrow"></a></li>
+                        <li><a class="has-arrow"></a></li>
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false" (click) = "goProducts()"><i class="mdi mdi-table"></i><span class="hide-menu">Ürünler </span></a>
+                          
+                        </li>
+                        <li><a class="has-arrow"></a></li>
+                        <li><a class="has-arrow"></a></li>
+                        <li><a class="has-arrow"></a></li>
+                        <li>
+                            <a class="has-arrow " href="#" aria-expanded="false" (click) = "goCompanies()"><i class="mdi mdi-bullseye"></i><span class="hide-menu">Şirketler</span></a>
+                        </li>
+                        <li><a class="has-arrow"></a></li>
+                        <li><a class="has-arrow"></a></li>
+                        <li><a class="has-arrow"></a></li>
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false" (click) = "goProformas()"><i class="mdi mdi-chart-bubble" ></i><span class="hide-menu">Proforma</span></a>
+                        </li>
+                        <li><a class="has-arrow"></a></li>
+                        <li><a class="has-arrow"></a></li>
+                        <li><a class="has-arrow"></a></li>
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false" (click) = "goInvoice()"><i class="mdi mdi-file" ></i><span class="hide-menu">Fatura</span></a>
+                        </li>
+                        <li><a class="has-arrow"></a></li>
+                        <li><a class="has-arrow"></a></li>
+                        <li><a class="has-arrow"></a></li>
+ 
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false" (click) = "logout()"><span class="hide-menu" style="color:red">Çıkış</span></a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper" style="padding-bottom: 40px;padding-top: 25px;">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-block">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="d-flex flex-wrap">
+        <div class="table col-lg-12">
+            <tr>
+                    <div class="form-group" style="margin-bottom: 0px;">
+                            <th><div ><input style="height: 20px;min-height: 32px;" class="form-control" required="" type="text"  id="inputName" [(ngModel)]="inputName"/>
+                                <span class="bar"></span></div></th>
+                            <th> <div class="button-group">
+                                    <button class="btn btn-block btn-outline-primary" type="button" (click)="FilterByName()">Ara</button>
+                                    </div> </th>
+                             <th></th>
+                             <th></th>
+                            <th class="text-right"><button class="btn btn-block btn-outline-primary" type="button" (click)="refresh()">Yenile</button></th>
+                             </div>
+            </tr>
+        </div>
+    
+         <h3 style="color: #369; margin-left:7px">Ürünler</h3>
+<table class="table col-lg-12">
+  <thead>
+    <tr style="color:#4d4d4d">
+      <th>ID</th>
+      <th>Açıklama (Tr)</th>
+      <th>Açıklama (İng)</th>
+      <th>Gemaş Kod</th>
+      <th>Fiyat</th>
+      <th>
+        <a href="" [routerLink]="['/ProductCreate']">
+          <i class="fa fa-plus"></i>
+        </a>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngIf="!products.length">
+      <td colspan="5">Loading...</td>
+    </tr>
+    <tr  *ngFor="#product of products">
+      <td>{{product.Id}}</td>
+      <td>{{product.Description_Tr}}</td>
+      <td>{{product.Description_En}}</td>
+      <td>{{product.GemasCode}}</td>
+      <td>{{product.Price}}</td>
+      <td>
+        <a href="" [routerLink]="['/ProductUpdate', {id: product.Id}]">
+          <i class="fa fa-pencil" style="color: #006600"></i>
+        </a>
+        <a href="javascript:void(0)" (click)="deleteModel(product) ">
+          <i class="fa fa-trash" style="color:#ff3333"></i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="btn-toolbar" role="toolbar" style="margin: 0;" >   
+            <div class="dataTables_paginate paging_simple_numbers">
+               <ul class="pagination" >
+                  <li class="paginate_button previous" [ngClass]="{'disabled': (currentIndex == 1 || pageNumber == 0)}" ><a  (click)="prevPage()" href="#">Prev</a></li>
+                     <li class="paginate_button" *ngFor="#page of pagesIndex"  [ngClass]="{'active': (currentIndex == page)}" style="background:#fff">
+                        <a (click)="setPage(page)" href="#">{{page}}</a>
+                     </li>
+                  <li class="paginate_button next" [ngClass]="{'disabled': (currentIndex == pageNumber || pageNumber == 0)}" ><a   (click)="nextPage()" href="#">Next</a></li>
+               </ul>
+            </div>
+            <div class="pull-right text-right">
+                    <label  style="margin-top:10px; font-size:14px;">Page {{currentIndex}}/{{pageNumber}}</label>
+                    </div>
+         </div>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer">
+                 © 2017 GEMAŞ A.Ş.
+            </footer>
+        </div>
+    </div>
+  
+
+

@@ -1,0 +1,98 @@
+<!--<form [ngFormModel]="companyForm" novalidate (ngSubmit)="onSubmit()" class="well">
+
+  <div class="form-group" [ngClass]="{'has-danger': !companyForm.controls.Name.valid}" >
+    <label class="form-control-label" for="Name_field">Şirket Adı</label>
+    <input type="text" class="form-control" placeholder="Ad" id="Name_field"
+           ngControl='Name'  >
+
+    <span class="text-help" *ngIf="!companyForm.controls.Name.valid"
+          *ngFor="#e of companyForm.controls.Name.errors | fieldErrors: 'Ad'" >
+      {{e}}
+    </span>
+  </div>
+
+  <div class="form-group" [ngClass]="{'has-danger': !companyForm.controls.Email.valid}" >
+    <label class="form-control-label" for="Email_field">E-mail</label>
+    <input type="text" class="form-control" placeholder="E-mail" id="Email_field"
+           ngControl="Email" >
+
+    <span class="text-help" *ngIf="!companyForm.controls.Email.valid"
+          *ngFor="#e of companyForm.controls.Email.errors | fieldErrors: 'E-mail" >
+      {{e}}
+    </span>
+  </div>
+
+   <div class="form-group" [ngClass]="{'has-danger': !companyForm.controls.Address.valid}" >
+    <label class="form-control-label" for="Address_field">Adres</label>
+    <input type="text" class="form-control" placeholder="Adres" id="Address_field"
+           ngControl="Address" >
+
+    <span class="text-help" *ngIf="!companyForm.controls.Address.valid"
+          *ngFor="#e of companyForm.controls.Address.errors | fieldErrors: 'Adres" >
+      {{e}}
+    </span>
+  </div>
+
+   <div class="form-group" [ngClass]="{'has-danger': !companyForm.controls.Phone.valid}" >
+    <label class="form-control-label" for="Phone_field">Telefon</label>
+    <input type="text" class="form-control" placeholder="Telefon" id="Phone_field"
+           ngControl="Phone" >
+
+    <span class="text-help" *ngIf="!companyForm.controls.Phone.valid"
+          *ngFor="#e of companyForm.controls.Phone.errors | fieldErrors: 'Telefon'" >
+      {{e}}
+    </span>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Kaydet</button>
+</form>
+-->
+<form [ngFormModel]="companyForm" novalidate (ngSubmit)="onSubmit()" class="well">
+  
+    <div class="form-group" [ngClass]="{'has-danger': !companyForm.controls.Name.valid}" >
+      <label class="form-control-label" for="Name_field">Şirket Adı</label>
+      <input type="text" class="form-control" placeholder="Ad" id="Name_field"
+             ngControl='Name'  >
+  
+      <span class="text-help" *ngIf="!companyForm.controls.Name.valid"
+            *ngFor="#e of companyForm.controls.Name.errors | fieldErrors: 'Ad'" >
+        {{e}}
+      </span>
+    </div>
+  
+    <div class="form-group" [ngClass]="{'has-danger': !companyForm.controls.Email.valid}" >
+      <label class="form-control-label" for="Email_field">E-mail</label>
+      <input type="text" class="form-control" placeholder="E-mail" id="Email_field"
+             ngControl="Email" >
+  
+      <span class="text-help" *ngIf="!companyForm.controls.Email.valid"
+            *ngFor="#e of companyForm.controls.Email.errors | fieldErrors: 'E-mail'" >
+        {{e}}
+      </span>
+    </div>
+  
+     <div class="form-group" [ngClass]="{'has-danger': !companyForm.controls.Address.valid}" >
+      <label class="form-control-label" for="Address_field">Adres</label>
+      <input type="text" class="form-control" placeholder="Adres" id="Address_field"
+             ngControl="Address" >
+  
+      <span class="text-help" *ngIf="!companyForm.controls.Address.valid"
+            *ngFor="#e of companyForm.controls.Address.errors | fieldErrors: 'Adres'" >
+        {{e}}
+      </span>
+    </div>
+  
+     <div class="form-group" [ngClass]="{'has-danger': !companyForm.controls.Phone.valid}" >
+      <label class="form-control-label" for="Phone_field">Telefon</label>
+      <input type="text" class="form-control" placeholder="Telefon" id="Phone_field"
+             ngControl="Phone" >
+  
+      <span class="text-help" *ngIf="!companyForm.controls.Phone.valid"
+            *ngFor="#e of companyForm.controls.Phone.errors | fieldErrors: 'Telefon'" >
+        {{e}}
+      </span>
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+  </form>
+  
